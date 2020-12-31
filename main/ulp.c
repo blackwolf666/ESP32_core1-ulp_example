@@ -53,7 +53,7 @@ void task1(void* params){
     gpio_config(&io_conf);
 
     int s = 1;
-    for (;;) {
+    while(1) {
         s = 1-s;
         vTaskDelay(1000/portTICK_PERIOD_MS);
         gpio_set_level(i, s);
@@ -86,6 +86,5 @@ void app_main(void) {
 
     xTaskCreatePinnedToCore(task0,"my_task0",10000,&pin0,1,NULL,0);
     xTaskCreatePinnedToCore(task1,"my_task1",10000,&pin1,1,NULL,1);
-    while(1) {    vTaskDelay(1000/portTICK_PERIOD_MS);
-}
+    while(1) {    vTaskDelay(1000/portTICK_PERIOD_MS); }
 }
